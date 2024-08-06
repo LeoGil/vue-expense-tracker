@@ -1,11 +1,17 @@
 <template>
   <div class="flex justify-center items-center flex-col h-screen">
-    <HeaderComponent />
-    <div>
-      <BalanceComponent />
-      <IncomeExpensesComponent />
-      <TransactionListComponent />
-      <AddTransactionComponent />
+    <div class="items-center flex flex-col max-w-max">
+      <div class="mb-4">
+        <HeaderComponent />
+      </div>
+      <div>
+        <div class="mb-4">
+          <BalanceComponent />
+        </div>
+        <IncomeExpensesComponent />
+        <TransactionListComponent />
+        <AddTransactionComponent />
+      </div>
     </div>
   </div>
 </template>

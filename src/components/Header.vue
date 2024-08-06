@@ -1,5 +1,5 @@
 <template>
-    <h2>Expense Tracker</h2>
+    <h2 class="text-2xl font-bold">Expense Tracker</h2>
 </template>
 
 <script>
