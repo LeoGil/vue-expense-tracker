@@ -1,11 +1,11 @@
 <template>
-  <div class="flex justify-center items-center flex-col h-screen">
-    <div class="items-center flex flex-col max-w-max">
-      <div class="mb-4">
+  <div class="box-border bg-gray-50 flex flex-col items-center justify-center min-h-0 m-0 p-4 h-screen">
+    <div class="box-border w-full md:w-3/4 lg:w-1/4">
+      <div>
         <HeaderComponent />
       </div>
       <div>
-        <div class="mb-4">
+        <div>
           <BalanceComponent />
         </div>
         <IncomeExpensesComponent />
