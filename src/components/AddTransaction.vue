@@ -1,5 +1,5 @@
 <template>
-    <h3 class="text-base font-bold border-b-2 border-black pb-1 mt-10 mx-0 mb-3">Add New Transaction</h3>
+    <h3 class="text-base font-bold border-b-2 border-black pb-1 mt-10 mx-0">Add New Transaction</h3>
     <form>
         <div>
             <label class="inline-block mx-0 my-3 font-semibold" for="text">Name</label>
