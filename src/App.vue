@@ -8,7 +8,7 @@
         <div>
           <BalanceDisplayComponent :balance="balance" />
         </div>
-        <IncomeExpensesComponent />
+        <IncomeExpensesComponent :income="income" :expense="expense" />
         <TransactionListComponent :transactions="transactions" />
         <AddTransactionComponent />
       </div>
@@ -32,9 +32,29 @@ const transactions = ref([
   { id: 4, text: 'Dividends', amount: 1000 }
 ]);
 
+//Get total balance
 const balance = computed(() => {
   return transactions.value.reduce((acc, transaction) => {
     return acc + transaction.amount
-  }, 0)
+  }, 0).toFixed(2)
+})
+
+//Get total income
+const income = computed(() => {
+  return transactions.value
+    .filter(transaction => transaction.amount > 0)
+    .reduce((acc, transaction) => {
+      return acc + transaction.amount
+    }, 0).toFixed(2)
+})
+
+//Get total expenses
+const expense = computed(() => {
+  return Math.abs(transactions.value
+    .filter(transaction => transaction.amount < 0)
+    .reduce((acc, transaction) => {
+      return acc + transaction.amount
+    }, 0)
+  ).toFixed(2)
 })
 </script>
