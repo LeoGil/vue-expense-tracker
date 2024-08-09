@@ -1,6 +1,9 @@
 const { defineConfig } = require('@vue/cli-service');
 
 module.exports = defineConfig({
+  publicPath: process.env.NODE_ENV === 'production'
+    ? '/vue-expense-tracker/'
+    : '/',
   transpileDependencies: true,  // Transpila dependências de terceiros
   configureWebpack: {
     entry: "./src/main.js",  // Ponto de entrada da aplicação
