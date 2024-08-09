@@ -6,11 +6,11 @@
       </div>
       <div>
         <div>
-          <BalanceDisplayComponent :balance="balance" />
+          <BalanceDisplayComponent :balance="+balance" />
         </div>
-        <IncomeExpensesComponent :income="income" :expense="expense" />
+        <IncomeExpensesComponent :income="+income" :expense="+expense" />
         <TransactionListComponent :transactions="transactions" />
-        <AddTransactionComponent />
+        <AddTransactionComponent @addTransaction="handleTransactionSubmitted"/>
       </div>
     </div>
   </div>
@@ -23,13 +23,14 @@ import IncomeExpensesComponent from './components/IncomeExpenses.vue'
 import TransactionListComponent from './components/TransactionList.vue'
 import AddTransactionComponent from './components/AddTransaction.vue'
 
+import { useToast } from 'vue-toastification'
 import { ref, computed } from 'vue'
+
+const toast = useToast()
 
 const transactions = ref([
   { id: 1, text: 'Cash', amount: -400 },
   { id: 2, text: 'Paycheck', amount: 400 },
-  { id: 3, text: 'Food', amount: -100 },
-  { id: 4, text: 'Dividends', amount: 1000 }
 ]);
 
 //Get total balance
@@ -57,4 +58,11 @@ const expense = computed(() => {
     }, 0)
   ).toFixed(2)
 })
+
+//Add transaction
+const handleTransactionSubmitted = (newTransaction) => {
+  transactions.value.push(newTransaction)
+
+  toast.success(`Transaction added: ${newTransaction.text}`)
+}
 </script>
