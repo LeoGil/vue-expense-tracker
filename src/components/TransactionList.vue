@@ -7,13 +7,13 @@
             :class ="transaction.amount < 0 ? 'border-red-600' : 'border-green-600'"
         >
             {{ transaction.text }} <span>{{ transaction.amount < 0 ? '-R$' : 'R$' }} {{ Math.abs(transaction.amount) }}</span>
-            <button class="cursor-pointer border-0 text-slate-200 text-xl leading-5 px-5 py-0.5 absolute top-2/4 left-0 -translate-x-full -translate-y-1/2 opacity-100 hover:opacity-100 hover:text-red-600 easy-in duration-200">X</button>
+            <button @click="deleteTransaction(transaction.id)" class="cursor-pointer border-0 text-slate-200 text-xl leading-5 px-5 py-0.5 absolute top-2/4 left-0 -translate-x-full -translate-y-1/2 opacity-100 hover:opacity-100 hover:text-red-600 easy-in duration-200">X</button>
         </li>
     </ul>
 </template>
 
 <script setup>
-import { defineProps } from 'vue';
+import { defineProps, defineEmits } from 'vue';
 
 defineProps({
   transactions: {
@@ -21,4 +21,9 @@ defineProps({
     required: true,
   },
 });
+
+const emit = defineEmits(['deleteTransaction']);
+const deleteTransaction = (id) => {
+    emit('deleteTransaction', id);
+}
 </script>

@@ -9,7 +9,7 @@
           <BalanceDisplayComponent :balance="+balance" />
         </div>
         <IncomeExpensesComponent :income="+income" :expense="+expense" />
-        <TransactionListComponent :transactions="transactions" />
+        <TransactionListComponent :transactions="transactions" @deleteTransaction="handleTransactionDeleted" />
         <AddTransactionComponent @addTransaction="handleTransactionSubmitted"/>
       </div>
     </div>
@@ -64,5 +64,12 @@ const handleTransactionSubmitted = (newTransaction) => {
   transactions.value.push(newTransaction)
 
   toast.success(`Transaction added: ${newTransaction.text}`)
+}
+
+//Delete transaction
+const handleTransactionDeleted = (id) => {
+  transactions.value = transactions.value.filter(transaction => transaction.id !== id)
+
+  toast.success('Transaction deleted')
 }
 </script>
